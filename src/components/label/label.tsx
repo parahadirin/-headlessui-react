@@ -1,0 +1,129 @@
+import React, {
+  createContext,
+  useContext,
+  useMemo,
+  useState,
+  type ElementType,
+  type ReactNode,
+  type Ref,
+} from 'react'
+import { useEvent } from '../../hooks/use-event'
+import { useId } from '../../hooks/use-id'
+import { useIsoMorphicEffect } from '../../hooks/use-iso-morphic-effect'
+import { useSyncRefs } from '../../hooks/use-sync-refs'
+import type { Props } from '../../types'
+import { forwardRefWithAs, render, type HasDisplayName, type RefProp } from '../../utils/render'
+
+// ---
+
+interface SharedData {
+  slot?: {}
+  name?: string
+  props?: {}
+}
+
+let LabelContext = createContext<({ register(value: string): () => void } & SharedData) | null>(
+  null
+)
+
+function useLabelContext() {
+  let context = useContext(LabelContext)
+  if (context === null) {
+    let err = new Error('You used a <Label /> component, but it is not inside a relevant parent.')
+    if (Error.captureStackTrace) Error.captureStackTrace(err, useLabelContext)
+    throw err
+  }
+  return context
+}
+
+interface LabelProviderProps extends SharedData {
+  children: ReactNode
+}
+
+export function useLabels(): [string | undefined, (props: LabelProviderProps) => JSX.Element] {
+  let [labelIds, setLabelIds] = useState<string[]>([])
+
+  return [
+    // The actual id's as string or undefined.
+    labelIds.length > 0 ? labelIds.join(' ') : undefined,
+
+    // The provider component
+    useMemo(() => {
+      return function LabelProvider(props: LabelProviderProps) {
+        let register = useEvent((value: string) => {
+          setLabelIds((existing) => [...existing, value])
+
+          return () =>
+            setLabelIds((existing) => {
+              let clone = existing.slice()
+              let idx = clone.indexOf(value)
+              if (idx !== -1) clone.splice(idx, 1)
+              return clone
+            })
+        })
+
+        let contextBag = useMemo(
+          () => ({ register, slot: props.slot, name: props.name, props: props.props }),
+          [register, props.slot, props.name, props.props]
+        )
+
+        return <LabelContext.Provider value={contextBag}>{props.children}</LabelContext.Provider>
+      }
+    }, [setLabelIds]),
+  ]
+}
+
+// ---
+
+let DEFAULT_LABEL_TAG = 'label' as const
+
+export type LabelProps<TTag extends ElementType = typeof DEFAULT_LABEL_TAG> = Props<TTag> & {
+  passive?: boolean
+}
+
+function LabelFn<TTag extends ElementType = typeof DEFAULT_LABEL_TAG>(
+  props: LabelProps<TTag>,
+  ref: Ref<HTMLLabelElement>
+) {
+  let internalId = useId()
+  let { id = `headlessui-label-${internalId}`, passive = false, ...theirProps } = props
+  let context = useLabelContext()
+  let labelRef = useSyncRefs(ref)
+
+  useIsoMorphicEffect(() => context.register(id), [id, context.register])
+
+  let ourProps = { ref: labelRef, ...context.props, id }
+
+  if (passive) {
+    if ('onClick' in ourProps) {
+      delete (ourProps as any)['htmlFor']
+      delete (ourProps as any)['onClick']
+    }
+
+    if ('onClick' in theirProps) {
+      delete (theirProps as any)['onClick']
+    }
+  }
+
+  return render({
+    ourProps,
+    theirProps,
+    slot: context.slot || {},
+    defaultTag: DEFAULT_LABEL_TAG,
+    name: context.name || 'Label',
+  })
+}
+
+// ---
+
+export interface _internal_ComponentLabel extends HasDisplayName {
+  <TTag extends ElementType = typeof DEFAULT_LABEL_TAG>(
+    props: LabelProps<TTag> & RefProp<typeof LabelFn>
+  ): JSX.Element
+}
+
+let LabelRoot = forwardRefWithAs(LabelFn) as unknown as _internal_ComponentLabel
+
+export let Label = Object.assign(LabelRoot, {
+  //
+})
