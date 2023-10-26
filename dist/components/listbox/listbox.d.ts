@@ -20,7 +20,7 @@ export type ListboxProps<TTag extends ElementType, TType, TActualType> = Props<T
     name?: string;
     multiple?: boolean;
 };
-declare function ListboxFn<TTag extends ElementType = typeof DEFAULT_LISTBOX_TAG, TType = string, TActualType = TType extends (infer U)[] ? U : TType>(props: ListboxProps<TTag, TType, TActualType>, ref: Ref<HTMLElement>): JSX.Element;
+declare function ListboxFn<TTag extends ElementType = typeof DEFAULT_LISTBOX_TAG, TType = string, TActualType = TType extends (infer U)[] ? U : TType>(props: ListboxProps<TTag, TType, TActualType>, ref: Ref<HTMLElement>): React.JSX.Element;
 declare let DEFAULT_BUTTON_TAG: "button";
 interface ButtonRenderPropArg {
     open: boolean;

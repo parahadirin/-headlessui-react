@@ -1,1 +1,2 @@
-export declare let useId: any;
+import React from 'react';
+export declare let useId: typeof React.useId;

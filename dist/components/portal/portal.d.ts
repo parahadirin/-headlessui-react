@@ -7,7 +7,7 @@ declare let DEFAULT_PORTAL_TAG: React.ExoticComponent<{
 interface PortalRenderPropArg {
 }
 export type PortalProps<TTag extends ElementType> = Props<TTag, PortalRenderPropArg>;
-declare function PortalFn<TTag extends ElementType = typeof DEFAULT_PORTAL_TAG>(props: PortalProps<TTag>, ref: Ref<HTMLElement>): React.ReactPortal | null;
+declare function PortalFn<TTag extends ElementType = typeof DEFAULT_PORTAL_TAG>(props: PortalProps<TTag>, ref: Ref<HTMLElement>): import("react").ReactPortal | null;
 declare let DEFAULT_GROUP_TAG: React.ExoticComponent<{
     children?: React.ReactNode;
 }>;
@@ -16,10 +16,10 @@ interface GroupRenderPropArg {
 export type PortalGroupProps<TTag extends ElementType> = Props<TTag, GroupRenderPropArg> & {
     target: MutableRefObject<HTMLElement | null>;
 };
-declare function GroupFn<TTag extends ElementType = typeof DEFAULT_GROUP_TAG>(props: PortalGroupProps<TTag>, ref: Ref<HTMLElement>): JSX.Element;
+declare function GroupFn<TTag extends ElementType = typeof DEFAULT_GROUP_TAG>(props: PortalGroupProps<TTag>, ref: Ref<HTMLElement>): React.JSX.Element;
 export declare function useNestedPortals(): readonly [React.MutableRefObject<HTMLElement[]>, ({ children }: {
     children: React.ReactNode;
-}) => JSX.Element];
+}) => React.JSX.Element];
 export interface _internal_ComponentPortal extends HasDisplayName {
     <TTag extends ElementType = typeof DEFAULT_PORTAL_TAG>(props: PortalProps<TTag> & RefProp<typeof PortalFn>): JSX.Element;
 }

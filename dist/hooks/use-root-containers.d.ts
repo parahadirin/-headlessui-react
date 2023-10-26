@@ -7,9 +7,9 @@ export declare function useRootContainers({ defaultContainers, portals, mainTree
     resolveContainers: () => HTMLElement[];
     contains: (element: HTMLElement) => boolean;
     mainTreeNodeRef: React.MutableRefObject<HTMLElement | null>;
-    MainTreeNode: () => JSX.Element | null;
+    MainTreeNode: () => React.JSX.Element | null;
 };
 export declare function useMainTreeNode(): {
     mainTreeNodeRef: React.MutableRefObject<HTMLElement | null>;
-    MainTreeNode: () => JSX.Element;
+    MainTreeNode: () => React.JSX.Element;
 };

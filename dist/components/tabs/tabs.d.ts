@@ -14,7 +14,7 @@ export type TabGroupProps<TTag extends ElementType> = Props<TTag, TabsRenderProp
     vertical?: boolean;
     manual?: boolean;
 }>;
-declare function GroupFn<TTag extends ElementType = typeof DEFAULT_TABS_TAG>(props: TabGroupProps<TTag>, ref: Ref<HTMLElement>): JSX.Element;
+declare function GroupFn<TTag extends ElementType = typeof DEFAULT_TABS_TAG>(props: TabGroupProps<TTag>, ref: Ref<HTMLElement>): React.JSX.Element;
 declare let DEFAULT_LIST_TAG: "div";
 interface ListRenderPropArg {
     selectedIndex: number;
@@ -45,7 +45,7 @@ export type TabPanelProps<TTag extends ElementType> = Props<TTag, PanelRenderPro
     id?: string;
     tabIndex?: number;
 }>;
-declare function PanelFn<TTag extends ElementType = typeof DEFAULT_PANEL_TAG>(props: TabPanelProps<TTag>, ref: Ref<HTMLElement>): JSX.Element | null;
+declare function PanelFn<TTag extends ElementType = typeof DEFAULT_PANEL_TAG>(props: TabPanelProps<TTag>, ref: Ref<HTMLElement>): React.JSX.Element | null;
 export interface _internal_ComponentTab extends HasDisplayName {
     <TTag extends ElementType = typeof DEFAULT_TAB_TAG>(props: TabProps<TTag> & RefProp<typeof TabFn>): JSX.Element;
 }

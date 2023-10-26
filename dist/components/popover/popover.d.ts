@@ -10,7 +10,7 @@ interface PopoverRenderPropArg {
 export type PopoverProps<TTag extends ElementType> = Props<TTag, PopoverRenderPropArg, never, {
     __demoMode?: boolean;
 }>;
-declare function PopoverFn<TTag extends ElementType = typeof DEFAULT_POPOVER_TAG>(props: PopoverProps<TTag>, ref: Ref<HTMLElement>): JSX.Element;
+declare function PopoverFn<TTag extends ElementType = typeof DEFAULT_POPOVER_TAG>(props: PopoverProps<TTag>, ref: Ref<HTMLElement>): React.JSX.Element;
 declare let DEFAULT_BUTTON_TAG: "button";
 interface ButtonRenderPropArg {
     open: boolean;
@@ -19,7 +19,7 @@ type ButtonPropsWeControl = 'aria-controls' | 'aria-expanded';
 export type PopoverButtonProps<TTag extends ElementType> = Props<TTag, ButtonRenderPropArg, ButtonPropsWeControl, {
     disabled?: boolean;
 }>;
-declare function ButtonFn<TTag extends ElementType = typeof DEFAULT_BUTTON_TAG>(props: PopoverButtonProps<TTag>, ref: Ref<HTMLButtonElement>): JSX.Element;
+declare function ButtonFn<TTag extends ElementType = typeof DEFAULT_BUTTON_TAG>(props: PopoverButtonProps<TTag>, ref: Ref<HTMLButtonElement>): React.JSX.Element;
 declare let DEFAULT_OVERLAY_TAG: "div";
 interface OverlayRenderPropArg {
     open: boolean;
@@ -38,12 +38,12 @@ type PanelPropsWeControl = 'tabIndex';
 export type PopoverPanelProps<TTag extends ElementType> = Props<TTag, PanelRenderPropArg, PanelPropsWeControl, PropsForFeatures<typeof PanelRenderFeatures> & {
     focus?: boolean;
 }>;
-declare function PanelFn<TTag extends ElementType = typeof DEFAULT_PANEL_TAG>(props: PopoverPanelProps<TTag>, ref: Ref<HTMLDivElement>): JSX.Element;
+declare function PanelFn<TTag extends ElementType = typeof DEFAULT_PANEL_TAG>(props: PopoverPanelProps<TTag>, ref: Ref<HTMLDivElement>): React.JSX.Element;
 declare let DEFAULT_GROUP_TAG: "div";
 interface GroupRenderPropArg {
 }
 export type PopoverGroupProps<TTag extends ElementType> = Props<TTag, GroupRenderPropArg>;
-declare function GroupFn<TTag extends ElementType = typeof DEFAULT_PANEL_TAG>(props: PopoverGroupProps<TTag>, ref: Ref<HTMLElement>): JSX.Element;
+declare function GroupFn<TTag extends ElementType = typeof DEFAULT_PANEL_TAG>(props: PopoverGroupProps<TTag>, ref: Ref<HTMLElement>): React.JSX.Element;
 export interface _internal_ComponentPopover extends HasDisplayName {
     <TTag extends ElementType = typeof DEFAULT_POPOVER_TAG>(props: PopoverProps<TTag> & RefProp<typeof PopoverFn>): JSX.Element;
 }

@@ -1,4 +1,4 @@
-import { type MutableRefObject, type ReactNode } from 'react';
+import React, { type MutableRefObject, type ReactNode } from 'react';
 type OnUpdate = (message: StackMessage, type: string, element: MutableRefObject<HTMLElement | null>) => void;
 export declare enum StackMessage {
     Add = 0,
@@ -11,5 +11,5 @@ export declare function StackProvider({ children, onUpdate, type, element, enabl
     type: string;
     element: MutableRefObject<HTMLElement | null>;
     enabled?: boolean;
-}): JSX.Element;
+}): React.JSX.Element;
 export {};

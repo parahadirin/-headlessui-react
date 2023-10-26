@@ -1,4 +1,4 @@
-import { type ElementType, type Ref } from 'react';
+import React, { type ElementType, type Ref } from 'react';
 import { _internal_ComponentDescription } from '../../components/description/description.js';
 import { _internal_ComponentLabel } from '../../components/label/label.js';
 import type { Props } from '../../types.js';
@@ -17,7 +17,7 @@ export type RadioGroupProps<TTag extends ElementType, TType> = Props<TTag, Radio
     form?: string;
     name?: string;
 }>;
-declare function RadioGroupFn<TTag extends ElementType = typeof DEFAULT_RADIO_GROUP_TAG, TType = string>(props: RadioGroupProps<TTag, TType>, ref: Ref<HTMLElement>): JSX.Element;
+declare function RadioGroupFn<TTag extends ElementType = typeof DEFAULT_RADIO_GROUP_TAG, TType = string>(props: RadioGroupProps<TTag, TType>, ref: Ref<HTMLElement>): React.JSX.Element;
 declare let DEFAULT_OPTION_TAG: "div";
 interface OptionRenderPropArg {
     checked: boolean;
@@ -29,7 +29,7 @@ export type RadioOptionProps<TTag extends ElementType, TType> = Props<TTag, Opti
     value: TType;
     disabled?: boolean;
 }>;
-declare function OptionFn<TTag extends ElementType = typeof DEFAULT_OPTION_TAG, TType = Parameters<typeof RadioGroupRoot>[0]['value']>(props: RadioOptionProps<TTag, TType>, ref: Ref<HTMLElement>): JSX.Element;
+declare function OptionFn<TTag extends ElementType = typeof DEFAULT_OPTION_TAG, TType = Parameters<typeof RadioGroupRoot>[0]['value']>(props: RadioOptionProps<TTag, TType>, ref: Ref<HTMLElement>): React.JSX.Element;
 export interface _internal_ComponentRadioGroup extends HasDisplayName {
     <TTag extends ElementType = typeof DEFAULT_RADIO_GROUP_TAG, TType = string>(props: RadioGroupProps<TTag, TType> & RefProp<typeof RadioGroupFn>): JSX.Element;
 }

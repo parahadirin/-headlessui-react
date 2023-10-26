@@ -15,7 +15,7 @@ export type DialogProps<TTag extends ElementType> = Props<TTag, DialogRenderProp
     role?: 'dialog' | 'alertdialog';
     __demoMode?: boolean;
 }>;
-declare function DialogFn<TTag extends ElementType = typeof DEFAULT_DIALOG_TAG>(props: DialogProps<TTag>, ref: Ref<HTMLDivElement>): JSX.Element;
+declare function DialogFn<TTag extends ElementType = typeof DEFAULT_DIALOG_TAG>(props: DialogProps<TTag>, ref: Ref<HTMLDivElement>): React.JSX.Element;
 declare let DEFAULT_OVERLAY_TAG: "div";
 interface OverlayRenderPropArg {
     open: boolean;
@@ -29,7 +29,7 @@ interface BackdropRenderPropArg {
 }
 type BackdropPropsWeControl = 'aria-hidden';
 export type DialogBackdropProps<TTag extends ElementType> = Props<TTag, BackdropRenderPropArg, BackdropPropsWeControl>;
-declare function BackdropFn<TTag extends ElementType = typeof DEFAULT_BACKDROP_TAG>(props: DialogBackdropProps<TTag>, ref: Ref<HTMLDivElement>): JSX.Element;
+declare function BackdropFn<TTag extends ElementType = typeof DEFAULT_BACKDROP_TAG>(props: DialogBackdropProps<TTag>, ref: Ref<HTMLDivElement>): React.JSX.Element;
 declare let DEFAULT_PANEL_TAG: "div";
 interface PanelRenderPropArg {
     open: boolean;

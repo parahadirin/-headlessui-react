@@ -1,4 +1,4 @@
-import { type ElementType, type MutableRefObject, type Ref } from 'react';
+import React, { type ElementType, type MutableRefObject, type Ref } from 'react';
 import type { Props } from '../../types.js';
 import { type HasDisplayName, type RefProp } from '../../utils/render.js';
 type Containers = (() => Iterable<HTMLElement>) | MutableRefObject<Set<MutableRefObject<HTMLElement | null>>>;
@@ -22,7 +22,7 @@ export type FocusTrapProps<TTag extends ElementType> = Props<TTag> & {
     features?: Features;
     containers?: Containers;
 };
-declare function FocusTrapFn<TTag extends ElementType = typeof DEFAULT_FOCUS_TRAP_TAG>(props: FocusTrapProps<TTag>, ref: Ref<HTMLDivElement>): JSX.Element;
+declare function FocusTrapFn<TTag extends ElementType = typeof DEFAULT_FOCUS_TRAP_TAG>(props: FocusTrapProps<TTag>, ref: Ref<HTMLDivElement>): React.JSX.Element;
 export interface _internal_ComponentFocusTrap extends HasDisplayName {
     <TTag extends ElementType = typeof DEFAULT_FOCUS_TRAP_TAG>(props: FocusTrapProps<TTag> & RefProp<typeof FocusTrapFn>): JSX.Element;
 }

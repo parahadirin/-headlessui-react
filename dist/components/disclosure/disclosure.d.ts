@@ -11,7 +11,7 @@ interface DisclosureRenderPropArg {
 export type DisclosureProps<TTag extends ElementType> = Props<TTag, DisclosureRenderPropArg> & {
     defaultOpen?: boolean;
 };
-declare function DisclosureFn<TTag extends ElementType = typeof DEFAULT_DISCLOSURE_TAG>(props: DisclosureProps<TTag>, ref: Ref<HTMLElement>): JSX.Element;
+declare function DisclosureFn<TTag extends ElementType = typeof DEFAULT_DISCLOSURE_TAG>(props: DisclosureProps<TTag>, ref: Ref<HTMLElement>): React.JSX.Element;
 declare let DEFAULT_BUTTON_TAG: "button";
 interface ButtonRenderPropArg {
     open: boolean;
@@ -28,7 +28,7 @@ interface PanelRenderPropArg {
 }
 declare let PanelRenderFeatures: number;
 export type DisclosurePanelProps<TTag extends ElementType> = Props<TTag, PanelRenderPropArg> & PropsForFeatures<typeof PanelRenderFeatures>;
-declare function PanelFn<TTag extends ElementType = typeof DEFAULT_PANEL_TAG>(props: DisclosurePanelProps<TTag>, ref: Ref<HTMLDivElement>): JSX.Element;
+declare function PanelFn<TTag extends ElementType = typeof DEFAULT_PANEL_TAG>(props: DisclosurePanelProps<TTag>, ref: Ref<HTMLDivElement>): React.JSX.Element;
 export interface _internal_ComponentDisclosure extends HasDisplayName {
     <TTag extends ElementType = typeof DEFAULT_DISCLOSURE_TAG>(props: DisclosureProps<TTag> & RefProp<typeof DisclosureFn>): JSX.Element;
 }

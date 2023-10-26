@@ -7,7 +7,7 @@ declare let DEFAULT_GROUP_TAG: React.ExoticComponent<{
     children?: React.ReactNode;
 }>;
 export type SwitchGroupProps<TTag extends ElementType> = Props<TTag>;
-declare function GroupFn<TTag extends ElementType = typeof DEFAULT_GROUP_TAG>(props: SwitchGroupProps<TTag>): JSX.Element;
+declare function GroupFn<TTag extends ElementType = typeof DEFAULT_GROUP_TAG>(props: SwitchGroupProps<TTag>): React.JSX.Element;
 declare let DEFAULT_SWITCH_TAG: "button";
 interface SwitchRenderPropArg {
     checked: boolean;
@@ -21,7 +21,7 @@ export type SwitchProps<TTag extends ElementType> = Props<TTag, SwitchRenderProp
     value?: string;
     form?: string;
 }>;
-declare function SwitchFn<TTag extends ElementType = typeof DEFAULT_SWITCH_TAG>(props: SwitchProps<TTag>, ref: Ref<HTMLButtonElement>): JSX.Element;
+declare function SwitchFn<TTag extends ElementType = typeof DEFAULT_SWITCH_TAG>(props: SwitchProps<TTag>, ref: Ref<HTMLButtonElement>): React.JSX.Element;
 export interface _internal_ComponentSwitch extends HasDisplayName {
     <TTag extends ElementType = typeof DEFAULT_SWITCH_TAG>(props: SwitchProps<TTag> & RefProp<typeof SwitchFn>): JSX.Element;
 }

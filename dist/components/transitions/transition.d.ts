@@ -1,4 +1,4 @@
-import { type ElementType, type MutableRefObject, type Ref } from 'react';
+import React, { type ElementType, type MutableRefObject, type Ref } from 'react';
 import type { Props, ReactTag } from '../../types.js';
 import { Features, type HasDisplayName, type PropsForFeatures, type RefProp } from '../../utils/render.js';
 export interface TransitionClasses {
@@ -22,12 +22,12 @@ export type TransitionChildProps<TTag extends ReactTag> = Props<TTag, Transition
 declare let DEFAULT_TRANSITION_CHILD_TAG: "div";
 type TransitionChildRenderPropArg = MutableRefObject<HTMLDivElement>;
 declare let TransitionChildRenderFeatures: Features;
-declare function TransitionChildFn<TTag extends ElementType = typeof DEFAULT_TRANSITION_CHILD_TAG>(props: TransitionChildProps<TTag>, ref: Ref<HTMLElement>): JSX.Element;
+declare function TransitionChildFn<TTag extends ElementType = typeof DEFAULT_TRANSITION_CHILD_TAG>(props: TransitionChildProps<TTag>, ref: Ref<HTMLElement>): React.JSX.Element;
 export type TransitionRootProps<TTag extends ElementType> = TransitionChildProps<TTag> & {
     show?: boolean;
     appear?: boolean;
 };
-declare function TransitionRootFn<TTag extends ElementType = typeof DEFAULT_TRANSITION_CHILD_TAG>(props: TransitionRootProps<TTag>, ref: Ref<HTMLElement>): JSX.Element;
+declare function TransitionRootFn<TTag extends ElementType = typeof DEFAULT_TRANSITION_CHILD_TAG>(props: TransitionRootProps<TTag>, ref: Ref<HTMLElement>): React.JSX.Element;
 export interface _internal_ComponentTransitionRoot extends HasDisplayName {
     <TTag extends ElementType = typeof DEFAULT_TRANSITION_CHILD_TAG>(props: TransitionRootProps<TTag> & RefProp<typeof TransitionRootFn>): JSX.Element;
 }

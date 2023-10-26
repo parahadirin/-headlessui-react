@@ -11,7 +11,7 @@ interface MenuRenderPropArg {
 export type MenuProps<TTag extends ElementType> = Props<TTag, MenuRenderPropArg, never, {
     __demoMode?: boolean;
 }>;
-declare function MenuFn<TTag extends ElementType = typeof DEFAULT_MENU_TAG>(props: MenuProps<TTag>, ref: Ref<HTMLElement>): JSX.Element;
+declare function MenuFn<TTag extends ElementType = typeof DEFAULT_MENU_TAG>(props: MenuProps<TTag>, ref: Ref<HTMLElement>): React.JSX.Element;
 declare let DEFAULT_BUTTON_TAG: "button";
 interface ButtonRenderPropArg {
     open: boolean;
